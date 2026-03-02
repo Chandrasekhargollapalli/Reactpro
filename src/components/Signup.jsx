@@ -1,15 +1,29 @@
 import { useState } from "react";
-
+import axios from "axios";
 export default function Signup({ onBackToLogin }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   alert("Signup successful");
+  //   onBackToLogin();
+  // };
+  const handleSubmit= async(e)=>{
     e.preventDefault();
-    alert("Signup successful");
-    onBackToLogin();
-  };
+    try{
+const res = await axios.post('http://localhost:5004/api/auth/signup',{name,email,password})
+console.log('response of sign up dataaa..',res)
+if(res?.data?.status){
+  alert('Signup successful')
+  onBackToLogin()
+}
+    }catch(err){
+      console.log(err)
+    }
+  }
 
   return (
     <div className="bg-white p-8 rounded-xl shadow-md w-80">

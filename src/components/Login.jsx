@@ -1,14 +1,32 @@
+import axios from "axios";
 import { useState } from "react";
 
 export default function Login({ onSignup, onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onLogin({ email });
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   onLogin({ email });
+  // };
 
+  const handleSubmit = async(e)=>{
+    e.preventDefault()
+    try{
+const  res = await axios.post('http://localhost:5004/api/auth/login',{email,password})
+console.log('response of login dataaa..',res)
+console.log('response of login dataaa..',res?.data)
+if(res?.data?.status){
+  alert("Login Successfully")
+  onLogin({email})
+}else{
+alert(res?.data?.message || 'Login failed')
+}
+    }catch(err){
+      console.log(err)
+      
+    }
+  }
   return (
     <div className="bg-white p-8 rounded-xl shadow-md w-80">
       <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
