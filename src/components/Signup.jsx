@@ -14,7 +14,8 @@ export default function Signup({ onBackToLogin }) {
   const handleSubmit= async(e)=>{
     e.preventDefault();
     try{
-const res = await axios.post('http://localhost:5004/api/auth/signup',{name,email,password})
+// const res = await axios.post('http://localhost:5004/api/auth/signup',{name,email,password})
+const res = await axios.post('http://44.198.157.33/api/auth/signup',{name,email,password})
 console.log('response of sign up dataaa..',res)
 if(res?.data?.status){
   alert('Signup successful')

@@ -13,7 +13,8 @@ export default function Login({ onSignup, onLogin }) {
   const handleSubmit = async(e)=>{
     e.preventDefault()
     try{
-const  res = await axios.post('http://localhost:5004/api/auth/login',{email,password})
+// const  res = await axios.post('http://localhost:5004/api/auth/login',{email,password})
+const  res = await axios.post('http://44.198.157.33/api/auth/login',{email,password})
 console.log('response of login dataaa..',res)
 console.log('response of login dataaa..',res?.data)
 if(res?.data?.status){
