@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-
+import BASE_URL from "./constants";
+import { toast } from "react-toastify";
 export default function Signup({ onBackToLogin }) {
 
   const [name, setName] = useState("");
@@ -14,12 +15,12 @@ export default function Signup({ onBackToLogin }) {
     try {
 
       const res = await axios.post(
-        "http://44.198.157.33/api/auth/signup",
+        `${BASE_URL}/auth/signup`,
         { name, email, password }
       );
 
       if (res?.data?.status) {
-        alert("Signup successful");
+     toast.success("Signup successful");
         onBackToLogin();
       }
 

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-
+import BASE_URL from "./constants";
+import { toast } from "react-toastify";
 export default function Login({ onSignup, onLogin }) {
 
   const [email, setEmail] = useState("");
@@ -13,15 +14,15 @@ export default function Login({ onSignup, onLogin }) {
     try {
 
       const res = await axios.post(
-        "http://44.198.157.33/api/auth/login",
+        `${BASE_URL}/auth/login`,
         { email, password }
       );
 
       if (res?.data?.status) {
-        alert("Login Successfully");
+       toast.success("Login Successfully");
         onLogin({ email });
       } else {
-        alert(res?.data?.message || "Login failed");
+        toast.error(res?.data?.message || "Login failed");
       }
 
     } catch (err) {

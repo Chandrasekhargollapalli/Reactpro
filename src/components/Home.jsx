@@ -1,6 +1,6 @@
 import { FaReact, FaNodeJs, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiNextdotjs, SiRedux, SiMongodb, SiTailwindcss } from "react-icons/si";
-
+import chandu from "./images/chandu.jpg";
 export default function Home({ user }) {
 
   const username =
@@ -67,8 +67,8 @@ export default function Home({ user }) {
         {/* PROFILE IMAGE */}
         <div className="flex justify-center">
           <img
-            src="/profile.jpg"
-            alt="profile"
+            src={chandu}
+            alt="chandu"
             className="w-72 rounded-xl shadow-lg border border-gray-700"
           />
         </div>
